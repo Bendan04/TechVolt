@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Helper</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        textarea { width: 100%; height: 100px; margin-bottom: 10px; }
+        button { display: block; width: 100%; margin: 10px 0; padding: 10px; }
+        .card { border: 1px solid #ddd; padding: 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Educational Helper</h1>
+        <textarea id="question" placeholder="Ask a question..."></textarea>
+        <button onclick="askChatGPT()">Ask ChatGPT</button>
+        <button onclick="generateMemoryCards()">Create Memory Cards</button>
+        <button onclick="generateRandomQuestions()">Generate Questions</button>
+        
+        <h2>Memory Cards</h2>
+        <div id="memoryCards"></div>
+        
+        <h2>Random Questions</h2>
+        <ul id="randomQuestions"></ul>
+    </div>
+
+    <script>
+        function askChatGPT() {
+            let question = document.getElementById("question").value;
+            console.log("Question asked:", question);
+        }
+
+        function generateMemoryCards() {
+            let question = document.getElementById("question").value;
+            if (question) {
+                let card = document.createElement("div");
+                card.className = "card";
+                card.textContent = question;
+                document.getElementById("memoryCards").appendChild(card);
+            }
+        }
+
+        function generateRandomQuestions() {
+            let question = document.getElementById("question").value;
+            if (question) {
+                let listItem = document.createElement("li");
+                listItem.textContent = "Random question about " + question;
+                document.getElementById("randomQuestions").appendChild(listItem);
+            }
+        }
+    </script>
+</body>
+</html>
